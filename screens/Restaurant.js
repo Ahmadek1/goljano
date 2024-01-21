@@ -83,7 +83,7 @@ const Restaurant = ({ route, navigation }) => {
 
     function renderHeader() {
         return (
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{ flexDirection: 'row' , paddingTop: 50}}>
                 <TouchableOpacity
                     style={{
                         width: 50,

@@ -358,7 +358,7 @@ const Home = ({ navigation }) => {
 
     function renderHeader() {
         return (
-            <View style={{ flexDirection: 'row', height: 50 }}>
+            <View style={{ flexDirection: 'row', height: 50, paddingTop: 60 }}>
                 <TouchableOpacity
                     style={{
                         width: 50,
