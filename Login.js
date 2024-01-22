@@ -51,15 +51,15 @@ const Login = ({ navigation }) => {
   };
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#e8ecf4' }}>
+      <ScrollView style={{ flex: 1}}
+      showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
         <View style={styles.header}>
           <Image
             alt=""
             resizeMode="contain"
             style={styles.headerImg}
-            source={{
-              uri: 'https://withfra.me/android-chrome-512x512.png',
-            }} />
+            source={require('./assets/logo.png')} />
 
           <Text style={styles.title}>
             Sign in to <Text style={{ color: '#FC6D3F' }}>Gol-Jano</Text>
@@ -121,6 +121,7 @@ const Login = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
