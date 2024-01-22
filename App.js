@@ -10,6 +10,7 @@ import { Restaurant, OrderDelivery } from './screens'
 import Tabs from './navigation/tabs'
 import Login from './Login';
 import Register from './Register';
+import Logout from './screens/Logout';
 
 const Stack = createStackNavigator();
 
@@ -41,6 +42,7 @@ const App = () => {
                   <Stack.Screen name="Restaurant" component={Restaurant} />
                   <Stack.Screen name="OrderDelivery" component={OrderDelivery} />
                   <Stack.Screen name="Register" component={Register} />
+                  <Stack.Screen name="Logout" component={Logout} />
               </Stack.Navigator>
           </NavigationContainer>
       )

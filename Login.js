@@ -1,22 +1,36 @@
 //Login.js
-import React , { useState }from 'react';
-import { Text, TouchableOpacity, Input, TextInput,  Item, StyleSheet, Image, ScrollView, ImageBackground, Dimensions, View } from 'react-native'
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
+import React, { useState } from "react";
+import {
+  Text,
+  TouchableOpacity,
+  Input,
+  TextInput,
+  Item,
+  StyleSheet,
+  Image,
+  ScrollView,
+  ImageBackground,
+  Dimensions,
+  View,
+  SafeAreaView
+} from "react-native";
+
+import Icon from "react-native-vector-icons/MaterialIcons";
+import FontAwesome5Icon from "react-native-vector-icons/FontAwesome5";
 const Login = ({ navigation }) => {
-  const [UserName, setUserName] = useState('');
-  const [Password, setPassword] = useState('');
-  const [loginError, setLoginError] = useState('');
+  const [UserName, setUserName] = useState("");
+  const [Password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
   const handleLogin = () => {
     const userData = {
       UserName: UserName,
       Password: Password,
     };
-    console.log('Logging in with:', userData);
-    fetch('http://192.168.1.128:3000/login', {
-      method: 'POST',
+    console.log("Logging in with:", userData);
+    fetch("http://192.168.135.234:3000/login", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(userData),
     })
@@ -24,145 +38,175 @@ const Login = ({ navigation }) => {
       .then((data) => {
         if (data.user) {
           // Login successful, navigate to home
-          navigation.navigate('HomeTabs');
+          navigation.navigate('HomeTabs')
         } else {
           // Login failed, set error message
-          setLoginError('Invalid login credentials.');
+          setLoginError("Invalid login credentials.");
         }
       })
       .catch((error) => {
-        console.error('Login request error:', error);
-        setLoginError('An error occurred. Please try again.');
+        console.error("Login request error:", error);
+        setLoginError("An error occurred. Please try again.");
       });
-  };  return (
-//container Start
-    <ScrollView style={{ flex: 1, backgroundColor: '#FFFFFF' }}
-      showsVerticalScrollIndicator={false}>
-      {/* <ImageBackground source={require('./assets/Amoud.jpg')}
-        style={[styles.logocontainer, { height: Dimensions.get('window').height / 2.5, }]} >
-          <Image style={styles.logo} source={require('./assets/somPlant.png')} >
-        </Image>
-        <Text style={styles.SloganText}> Your onestop plant provider  </Text>
-      </ImageBackground> */}
-     {/* ButtonView */}
-      <View style={styles.ButtomView}>
-      <View style ={{padding:40}}>
-        <Text style={{color:"#007815", fontSize:20, paddingTop: 150}}> Welcome  </Text>
-        <Text>
-         Don`t have an ccount
-         <Text style={{color:'red', fontStyle:'italic'}} onPress={() => navigation.navigate('Register')} >
-        {'    '}
-        Register Now
-        </Text>
-         </Text>
-         {/* form input View
-          <View style = {{marginTop:50}}>
-            <Item floatingLabel style = {{borderColor: '007815', marginTop:20}} >
-        <label> email </label>
-        <Input value = "amoudUniversity" keyboardType = "emial-address"/>
-        <Icon name ="checkmark" style={{color:'#007815'}}/>
-          </Item>
-           <Item floatingLabel style = {{borderColor: '007815', marginTop:20}} >
-        <label> Password </label>
-        <Input value = "*********" />
-        <Icon name ="eye" style={{color:'#007815'}}/>
-          </Item>
-          </View>
-          */}
-        <View style = {{marginTop:50}}>
+  };
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#e8ecf4' }}>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Image
+            alt=""
+            resizeMode="contain"
+            style={styles.headerImg}
+            source={{
+              uri: 'https://withfra.me/android-chrome-512x512.png',
+            }} />
+
+          <Text style={styles.title}>
+            Sign in to <Text style={{ color: '#FC6D3F' }}>Gol-Jano</Text>
+          </Text>
+
+          <Text style={styles.subtitle}>
+            Get access to Gol-Jano Food delivery
+          </Text>
         </View>
-          <View>
-           <TextInput style = {styles.txtInput}placeholder="Please  type your Email"
-           onChangeText={setUserName}
-           value={UserName} />
-           <TextInput style = {styles.txtInput}placeholder="Please  type your password"
-           secureTextEntry
-           onChangeText={setPassword}
-           value={Password}/>
-           {loginError ? <Text style={styles.errorText}>{loginError}</Text> : null}
-    <TouchableOpacity
-      style={styles.button}
-      onPress={handleLogin} >
-      <Text style={{ color: "#fff", fontWeight: 'bold' }}>Submit </Text>
-    </TouchableOpacity>
+
+        <View style={styles.form}>
+          <View style={styles.input}>
+            <Text style={styles.inputLabel}>Username</Text>
+
+            <TextInput
+              
+              
+              
+              onChangeText={setUserName}
+              placeholder="Username"
+              placeholderTextColor="#6b7280"
+              style={styles.inputControl}
+               />
           </View>
-          <View style = {styles.ForgotPass}>
-          <View style= {{flex:1, marginLeft:-5}}>
-            <Text> Forgot password</Text>
-            </View>
+
+          <View style={styles.input}>
+            <Text style={styles.inputLabel}>Password</Text>
+
+            <TextInput
+              
+              onChangeText={setPassword}
+              placeholder="********"
+              placeholderTextColor="#6b7280"
+              style={styles.inputControl}
+              secureTextEntry
+               />
+               {loginError ? <Text style={styles.errorText}>{loginError}</Text> : null}
           </View>
-    </View>
+
+          <View style={styles.formAction}>
+            <TouchableOpacity
+              onPress={handleLogin}>
+              <View style={styles.btn}>
+                <Text style={styles.btnText}>Sign in</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+
+          <TouchableOpacity
+            onPress={() => {
+              // handle link
+              navigation.navigate('Register')
+            }}
+            style={{ marginTop: 'auto' }}>
+            <Text style={styles.formFooter}>
+              Don't have an account?{' '}
+              <Text style={{ textDecorationLine: 'underline' ,color: '#FC6D3F' }}>Sign up</Text>
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </ScrollView>
-    //container end
-  )
+    </SafeAreaView>
+  );
 };
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',    justifyContent: "flex-end",
-    alignItems: "center",
-    textAlign: "center",
-    maxWidth: 150,
-    marginLeft:150,
-    marginTop:150,
+    padding: 24,
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
   },
-  errorText: {
-    color: 'red',
+  title: {
+    fontSize: 27,
+    fontWeight: '700',
+    color: '#1d1d1d',
+    marginBottom: 6,
     textAlign: 'center',
-    marginVertical: 5,
   },
-  ForgotPass:{
-    height:50,
-    margin:20,
+  subtitle: {
+    fontSize: 15,
+    fontWeight: '500',
+    color: '#929292',
+    textAlign: 'center',
+  },
+  /** Header */
+  header: {
+    marginVertical: 36,
+  },
+  headerImg: {
+    width: 80,
+    height: 80,
+    alignSelf: 'center',
+    marginBottom: 36,
+  },
+  /** Form */
+  form: {
+    marginBottom: 24,
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
+  },
+  formAction: {
+    marginVertical: 24,
+  },
+  formFooter: {
+    fontSize: 17,
+    fontWeight: '600',
+    color: '#222',
+    textAlign: 'center',
+    letterSpacing: 0.15,
+  },
+  /** Input */
+  input: {
+    marginBottom: 16,
+  },
+  inputLabel: {
+    fontSize: 17,
+    fontWeight: '600',
+    color: '#222',
+    marginBottom: 8,
+  },
+  inputControl: {
+    height: 44,
+    backgroundColor: '#fff',
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    fontSize: 15,
+    fontWeight: '500',
+    color: '#222',
+  },
+  /** Button */
+  btn: {
     flexDirection: 'row',
-    color: 'black',
-  },
-    button: {
-      alignItems: "center",
-      backgroundColor: "green",
-      padding: 10,
-      color: '#FFFFFF',
-      borderRadius: 20,
-      width: 200,
-      marginLeft:50,
-      marginTop:20
-  },
-  txtInput: {
-    height: 40,
-    margin: 12,
-    borderBottomWidth: 1,
-    padding: 10,
-    color: 'green',
-    borderRadius: 50,
-    alignItems:"center",
-    justifyContent:"center"
-  },
-  ButtomView:{
-    flex: 1.5,
-    backgroundColor:'#FFFFFF',
-    bottom:50,
-    borderTopStartRadius:60,
-    borderTopEndRadius:60,
-    marginBottom:60,
-  },
-  SloganText: {
-    fontSize: 10,
-    color: '#FFFFFF',
-    justifyContent: 'center',
     alignItems: 'center',
-    textAlign: "center",
+    justifyContent: 'center',
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderWidth: 1,
+    backgroundColor: '#FC6D3F',
+    borderColor: '#FC6D3F',
   },
-logo: {
-  height: 80,
-  width: 80,
-  marginTop:50
-},
-logocontainer: {
-  display: 'flex',
-  flexDirection: 'column',
-  alignContent: 'center',
-  alignItems: 'center'
-}
+  btnText: {
+    fontSize: 18,
+    lineHeight: 26,
+    fontWeight: '600',
+    color: '#fff',
+  },
 });
 export default Login;

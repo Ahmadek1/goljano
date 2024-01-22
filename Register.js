@@ -1,7 +1,7 @@
 // Register.js
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity,
-    ScrollView, ImageBackground,Dimensions,Image} from 'react-native';
+    ScrollView, ImageBackground,Dimensions,Image, SafeAreaView} from 'react-native';
     import Icon from 'react-native-vector-icons/MaterialIcons';
 //import { fetch } from 'react-native'; // You may need to install 'fetch' using npm or yarn
 const Register = ({navigation}) => {
@@ -20,7 +20,7 @@ const Register = ({navigation}) => {
         Email,
       };
       // Make the API request to your server
-      fetch('http://192.168.1.128:3000/register', {
+      fetch('http://192.168.135.234:3000/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -46,146 +46,207 @@ const Register = ({navigation}) => {
       });
     };
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: '#FFFFFF' }}
-    showsVerticalScrollIndicator={false}>
-       <Icon name="arrow-back" size={28} onPress={() => navigation.goBack()} />
-      {/* <ImageBackground source={require('./assets/Amoud.jpg')}
-        style={[styles.logocontainer, { height: Dimensions.get('window').height / 2.5, }]} >
-          <Image style={styles.logo} source={require('./assets/somPlant.png')} >
-        </Image>
-        <Text style={styles.SloganText}> Your onestop plant provider  </Text>
-      </ImageBackground> */}
-      <View style={styles.ButtomView}>
-      <View style ={{padding:40}} >
-        <Text style={{color:"#007815", fontSize:20, paddingTop: 150}}> User Regsitration</Text>
-        <Text>
-       Please Note
-         <Text style={{color:'red', fontStyle:'italic'}}>
-        {'    '}
-       All fields are Required
-        </Text>
-         </Text>
-      <View style = {{marginTop:50, marginleft:10, marginRight:10}}>
-      <TextInput
-        style={styles.input}
-        placeholder="First Name"
-        value={FirstName}
-        onChangeText={setFirstName}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Last Name"
-        value={LastName}
-        onChangeText={setLastName}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="UserName"
-        value={UserName}
-        onChangeText={setUserName}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        keyboardType='numeric'
-        secureTextEntry
-        value={Password}
-        onChangeText={setPassword}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Email Address"
-        multiline
-        value={Email}
-        onChangeText={setEmail}
-      />
-      <TouchableOpacity style={styles.button} onPress={handleRegistration}>
-    <Text style={styles.buttonText}>Sign Up</Text>
-      </TouchableOpacity>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#e8ecf4' }}>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Image
+            alt=""
+            resizeMode="contain"
+            style={styles.headerImg}
+            source={{
+              uri: 'https://withfra.me/android-chrome-512x512.png',
+            }} />
+
+          <Text style={styles.title}>
+            Sign Up to <Text style={{ color: '#FC6D3F' }}>Gol-Jano</Text>
+          </Text>
+
+          <Text style={styles.subtitle}>
+            Get access to Gol-Jano Food delivery
+          </Text>
+        </View>
+
+        <View style={styles.form}>
+          <View style={styles.input}>
+            <Text style={styles.inputLabel}>First Name</Text>
+
+            <TextInput
+              autoCapitalize="none"
+              autoCorrect={false}
+             
+              onChangeText={setFirstName}
+              placeholder="first Name"
+              placeholderTextColor="#6b7280"
+              style={styles.inputControl}
+               />
+          </View>
+
+          <View style={styles.input}>
+            <Text style={styles.inputLabel}>Last Name</Text>
+
+            <TextInput
+              autoCapitalize="none"
+              autoCorrect={false}
+              
+              onChangeText={setLastName}
+              placeholder="Last Name"
+              placeholderTextColor="#6b7280"
+              style={styles.inputControl}
+               />
+          </View>
+
+          <View style={styles.input}>
+            <Text style={styles.inputLabel}>Username</Text>
+
+            <TextInput
+              autoCapitalize="none"
+              autoCorrect={false}
+              
+              onChangeText={setUserName}
+              placeholder="Username"
+              placeholderTextColor="#6b7280"
+              style={styles.inputControl}
+               />
+          </View>
+
+          <View style={styles.input}>
+            <Text style={styles.inputLabel}>Password</Text>
+
+            <TextInput
+              autoCorrect={false}
+              onChangeText={setPassword}
+              placeholder="********"
+              placeholderTextColor="#6b7280"
+              style={styles.inputControl}
+              secureTextEntry={true}
+               />
+          </View>
+
+          <View style={styles.input}>
+            <Text style={styles.inputLabel}>Email address</Text>
+
+            <TextInput
+              autoCapitalize="none"
+              autoCorrect={false}
+              
+              onChangeText={setEmail}
+              placeholder="goljano@example.com"
+              placeholderTextColor="#6b7280"
+              style={styles.inputControl}
+               />
+          </View>
+
+          <View style={styles.formAction}>
+            <TouchableOpacity
+              onPress={handleRegistration
+              }>
+              <View style={styles.btn}>
+                <Text style={styles.btnText}>Sign Up</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+
+          <TouchableOpacity
+            onPress={() => {
+              // handle link
+              navigation.navigate('Login')
+            }}
+            style={{ marginTop: 0 }}>
+            <Text style={styles.formFooter}>
+              Already have an account?{' '}
+              <Text style={{ textDecorationLine: 'underline', color: '#FC6D3F' }}>Sign in here!</Text>
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      </View>
-      </View>
-    </ScrollView>
+    </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 20,
+    padding: 24,
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
+    fontSize: 27,
+    fontWeight: '700',
+    color: '#1d1d1d',
+    marginBottom: 6,
     textAlign: 'center',
-    },
-    SloganText: {
-        fontSize: 10,
-        color: '#FFFFFF',
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: "center",
-      },
-      SloganText: {
-        fontSize: 10,
-        color: '#FFFFFF',
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: "center",
-      },
-    logocontainer: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignContent: 'center',
-      alignItems: 'center'
   },
-  input: {
-    borderWidth: 1,
-    borderColor: 'grey',
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 5,
-    height: 40,
-    margin: 10,
-    borderBottomWidth: 1,
-    padding: 10,
-    color: 'green',
-    alignItems:"center",
-    justifyContent:"center"
+  subtitle: {
+    fontSize: 15,
+    fontWeight: '500',
+    color: '#929292',
+    textAlign: 'center',
   },
-  button: {
-    backgroundColor: 'green',
-    padding: 15,
-    borderRadius: 5,
-    alignItems: 'center',
+  /** Header */
+  header: {
+    marginVertical: 36,
   },
-  logo: {
-    height: 100,
+  headerImg: {
     width: 80,
-    marginTop:50
+    height: 80,
+    alignSelf: 'center',
+    marginBottom: 36,
   },
-  button: {
-    alignItems: "center",
-    backgroundColor: "green",
-    padding: 10,
-    color: '#FFFFFF',
-    borderRadius: 20,
-    width: 200,
-    marginLeft:50,
-    marginTop:20
+  /** Form */
+  form: {
+    marginBottom: 24,
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 0,
   },
-  ButtomView:{
-    flex: 1.5,
-    backgroundColor:'#FFFFFF',
-    bottom:50,
-    borderTopStartRadius:60,
-    borderTopEndRadius:60,
-    marginBottom:60,
+  formAction: {
+    marginVertical: 24,
   },
-  buttonText: {
-    color: 'white',
-    fontSize: 14,
-    fontWeight: 'bold',
-  }
+  formFooter: {
+    fontSize: 17,
+    fontWeight: '600',
+    color: '#222',
+    textAlign: 'center',
+    letterSpacing: 0.15,
+  },
+  /** Input */
+  input: {
+    marginBottom: 16,
+  },
+  inputLabel: {
+    fontSize: 17,
+    fontWeight: '600',
+    color: '#222',
+    marginBottom: 8,
+  },
+  inputControl: {
+    height: 44,
+    backgroundColor: '#fff',
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    fontSize: 15,
+    fontWeight: '500',
+    color: '#222',
+  },
+  /** Button */
+  btn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderWidth: 1,
+    backgroundColor: '#FC6D3F',
+    borderColor: '#FC6D3F',
+  },
+  btnText: {
+    fontSize: 18,
+    lineHeight: 26,
+    fontWeight: '600',
+    color: '#fff',
+  },
 });
+
+
 export default Register;
