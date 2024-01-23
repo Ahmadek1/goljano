@@ -26,17 +26,17 @@ const Home = ({ navigation }) => {
     const categoryData = [
         {
             id: 1,
-            name: "Rice",
+            name: "Rice(Bariis)",
             icon: icons.rice_bowl,
         },
         {
             id: 2,
-            name: "Noodles",
+            name: "Pasta(Baasto)",
             icon: icons.noodle,
         },
         {
             id: 3,
-            name: "Hot Dogs",
+            name: "Digaag iyo Bariis",
             icon: icons.hotdog,
         },
         {
@@ -61,17 +61,17 @@ const Home = ({ navigation }) => {
         },
         {
             id: 8,
-            name: "Sushi",
+            name: "Drinks",
             icon: icons.sushi,
         },
         {
             id: 9,
-            name: "Desserts",
+            name: "Desserts(Macmacan)",
             icon: icons.donut,
         },
         {
             id: 10,
-            name: "Drinks",
+            name: "Drinks(Cabitan)",
             icon: icons.drink,
         },
 
@@ -85,7 +85,7 @@ const Home = ({ navigation }) => {
     const restaurantData = [
         {
             id: 1,
-            name: "ByProgrammers Burger",
+            name: "Burger",
             rating: 4.8,
             categories: [5, 7],
             priceRating: affordable,
@@ -102,7 +102,7 @@ const Home = ({ navigation }) => {
             menu: [
                 {
                     menuId: 1,
-                    name: "Crispy Chicken Burger",
+                    name: "Chicken Burger",
                     photo: images.crispy_chicken_burger,
                     description: "Burger with crispy chicken, cheese and lettuce",
                     calories: 200,
@@ -110,7 +110,7 @@ const Home = ({ navigation }) => {
                 },
                 {
                     menuId: 2,
-                    name: "Crispy Chicken Burger with Honey Mustard",
+                    name: "Digaag",
                     photo: images.honey_mustard_chicken_burger,
                     description: "Crispy Chicken Burger with Honey Mustard Coleslaw",
                     calories: 250,
@@ -118,7 +118,7 @@ const Home = ({ navigation }) => {
                 },
                 {
                     menuId: 3,
-                    name: "Crispy Baked French Fries",
+                    name: "Jabis iyo lugo digaag",
                     photo: images.baked_fries,
                     description: "Crispy Baked French Fries",
                     calories: 194,
@@ -128,7 +128,7 @@ const Home = ({ navigation }) => {
         },
         {
             id: 2,
-            name: "ByProgrammers Pizza",
+            name: "Pizza",
             rating: 4.8,
             categories: [2, 4, 6],
             priceRating: expensive,
@@ -145,7 +145,7 @@ const Home = ({ navigation }) => {
             menu: [
                 {
                     menuId: 4,
-                    name: "Hawaiian Pizza",
+                    name: "Large Pizza",
                     photo: images.hawaiian_pizza,
                     description: "Canadian bacon, homemade pizza crust, pizza sauce",
                     calories: 250,
@@ -153,7 +153,7 @@ const Home = ({ navigation }) => {
                 },
                 {
                     menuId: 5,
-                    name: "Tomato & Basil Pizza",
+                    name: "Middle Pizza",
                     photo: images.pizza,
                     description: "Fresh tomatoes, aromatic basil pesto and melted bocconcini",
                     calories: 250,
@@ -161,7 +161,7 @@ const Home = ({ navigation }) => {
                 },
                 {
                     menuId: 6,
-                    name: "Tomato Pasta",
+                    name: "Pasta",
                     photo: images.tomato_pasta,
                     description: "Pasta with fresh tomatoes",
                     calories: 100,
@@ -169,7 +169,7 @@ const Home = ({ navigation }) => {
                 },
                 {
                     menuId: 7,
-                    name: "Mediterranean Chopped Salad ",
+                    name: "Salad ",
                     photo: images.salad,
                     description: "Finely chopped lettuce, tomatoes, cucumbers",
                     calories: 100,
@@ -179,7 +179,7 @@ const Home = ({ navigation }) => {
         },
         {
             id: 3,
-            name: "ByProgrammers Hotdogs",
+            name: "Sandwich",
             rating: 4.8,
             categories: [3],
             priceRating: expensive,
@@ -196,7 +196,7 @@ const Home = ({ navigation }) => {
             menu: [
                 {
                     menuId: 8,
-                    name: "Chicago Style Hot Dog",
+                    name: "Sandwich",
                     photo: images.chicago_hot_dog,
                     description: "Fresh tomatoes, all beef hot dogs",
                     calories: 100,
@@ -206,7 +206,7 @@ const Home = ({ navigation }) => {
         },
         {
             id: 4,
-            name: "ByProgrammers Sushi",
+            name: "Baasto Saldaato",
             rating: 4.8,
             categories: [8],
             priceRating: expensive,
@@ -223,7 +223,7 @@ const Home = ({ navigation }) => {
             menu: [
                 {
                     menuId: 9,
-                    name: "Sushi sets",
+                    name: "Baasto",
                     photo: images.sushi,
                     description: "Fresh salmon, sushi rice, fresh juicy avocado",
                     calories: 100,
@@ -233,7 +233,7 @@ const Home = ({ navigation }) => {
         },
         {
             id: 5,
-            name: "ByProgrammers Cuisine",
+            name: "Macmacaan",
             rating: 4.8,
             categories: [1, 2],
             priceRating: affordable,
@@ -286,7 +286,7 @@ const Home = ({ navigation }) => {
         {
 
             id: 6,
-            name: "ByProgrammers Dessets",
+            name: "Cabitaan",
             rating: 4.9,
             categories: [9, 10],
             priceRating: affordable,

@@ -28,7 +28,7 @@ export const SIZES = {
 
     // font sizes
     largeTitle: 50,
-    h1: 30,
+    h1: 28,
     h2: 22,
     h3: 20,
     h4: 18,
